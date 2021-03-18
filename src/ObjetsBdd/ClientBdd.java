@@ -3,8 +3,9 @@ import java.io.Serializable;
 
 
 public class ClientBdd implements Serializable{
-    private int id, totalFacture,payement;
+    private int id,payement;
     private String nom, adresse;
+    float totalFacture;
 
     public int getId() {
         return id;
@@ -15,7 +16,7 @@ public class ClientBdd implements Serializable{
     public String getAdresse() {
         return adresse;
     }
-    public int getTotalFacture() {
+    public float getTotalFacture() {
         return totalFacture;
     }
     public int getPayement() {
@@ -30,7 +31,7 @@ public class ClientBdd implements Serializable{
     public void setAdresse(String addresse) {
         this.adresse = addresse;
     }
-    public void setTotalFacture(int totalFacture) {
+    public void setTotalFacture(float totalFacture) {
         this.totalFacture = totalFacture;
     }
     public void setPayement(int payement) {

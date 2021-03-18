@@ -3,14 +3,15 @@ package ObjetsBdd;
 import java.io.Serializable;
 
 public class ComposantBdd implements Serializable {
-    int ref,nbExemplaire,famille;
+    int nbExemplaire,famille;
     float prix;
+    String ref;
 
-    public int getRef() {
+    public String getRef() {
         return ref;
     }
 
-    public void setRef(int ref) {
+    public void setRef(String ref) {
         this.ref = ref;
     }
 

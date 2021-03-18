@@ -1,4 +1,5 @@
 import ObjetsBdd.ClientBdd;
+import ObjetsBdd.ComposantBdd;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -10,6 +11,7 @@ public class Client
 
     public static void main(String[] args) throws Exception {
         try {
+            //Test GetClient
             // Récupérer le registre
             Registry reg = LocateRegistry.getRegistry(null);
             System.out.println("Registre Récupéré");
@@ -34,6 +36,29 @@ public class Client
                     System.out.println("Mode Payement: " + c.getPayement());
                 }
             }
+            //test FindComposantByRef
+            ComposantBdd compo=stub.FindComposantByRef("'Turbo Resistance 2000Wut'");
+            System.out.println("Element récupéré :" + compo.getRef());
+
+            //Test findComposantByFamille
+
+            // Appel de la méthode distante à l'aide de l'objet obtenu
+            List<ComposantBdd> listeCompo = (List)stub.FindComposantByFamille(1);
+            System.out.println("Liste Compo Récupérée");
+
+            if(listeCompo.isEmpty()){
+                System.out.println("Pas de correspondance");
+            }
+            else{
+                for (ComposantBdd composant : listeCompo) {
+                    System.out.println("Ref: " + composant.getRef());
+                    System.out.println("Famille: " + composant.getFamille());
+                    System.out.println("Prix: " + composant.getPrix());
+                    System.out.println("Total NbExemplaire: " + composant.getNbExemplaire());
+                }
+            }
+
+
         } catch (Exception e) {
             System.err.println(e.toString());
         }
