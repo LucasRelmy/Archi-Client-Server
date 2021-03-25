@@ -1,3 +1,5 @@
+package Methodes;
+
 import ObjetsBdd.ClientBdd;
 import ObjetsBdd.ComposantBdd;
 
@@ -17,12 +19,12 @@ public class Client
             System.out.println("Registre Récupéré");
 
             // Recherche dans le registre de l'objet distant
-            RemoteInter stub = (RemoteInter) reg.lookup("RemoteInter");
+            RemoteInter stub = (RemoteInter) reg.lookup("Methodes.RemoteInter");
             System.out.println("Objet Distant Récupéré");
 
             // Appel de la méthode distante à l'aide de l'objet obtenu
             List<ClientBdd> liste = (List)stub.getClients();
-            System.out.println("Liste Client Récupérée");
+            System.out.println("Liste Methodes.Client Récupérée");
 
             if(liste.isEmpty()){
                 System.out.println("Pas de correspondance");
