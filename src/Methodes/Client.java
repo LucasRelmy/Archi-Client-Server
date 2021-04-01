@@ -2,6 +2,7 @@ package Methodes;
 
 import ObjetsBdd.ClientBdd;
 import ObjetsBdd.ComposantBdd;
+import Gui.Menu;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -59,7 +60,10 @@ public class Client
                     System.out.println("Total NbExemplaire: " + composant.getNbExemplaire());
                 }
             }
-
+            
+            //On lance le menu
+            Menu monMenu = new Menu();
+            monMenu.start();
 
         } catch (Exception e) {
             System.err.println(e.toString());

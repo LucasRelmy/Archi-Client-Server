@@ -25,7 +25,7 @@ public class MySQLManager {
 	private void connexion()
 	{
 		try {
-		    conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/archibdd?serverTimezone=UTC", "root", "root");
+		    conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/archibdd?serverTimezone=UTC", "root", "");
 			} catch (SQLException ex) {
 				System.out.println("SQLException: " + ex.getMessage());
 				System.out.println("SQLState: " + ex.getSQLState());
