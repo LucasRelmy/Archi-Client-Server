@@ -16,6 +16,7 @@ import javax.swing.*;
 
 public class Menu extends JFrame {
     private JComboBox<ClientBdd> comboBox1;
+    private ClientBdd clientSelect;
     private JTextField textField1;
     private JList list1;
     private JSpinner spinner1;
@@ -71,6 +72,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox<String> comboComptes = (JComboBox)e.getSource();
 				System.out.println((ClientBdd)comboComptes.getSelectedItem());
+				clientSelect = (ClientBdd)comboComptes.getSelectedItem();
 			}
 		});
 	}

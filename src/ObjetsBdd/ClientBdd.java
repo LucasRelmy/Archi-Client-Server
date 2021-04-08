@@ -40,10 +40,7 @@ public class ClientBdd implements Serializable{
 
     @Override
     public String toString() {
-        return "ClientBdd{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                '}';
+        return nom + " (id=" + id + ")";
     }
 }
 
