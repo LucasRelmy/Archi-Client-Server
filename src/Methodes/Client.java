@@ -62,8 +62,8 @@ public class Client
             }
             
             //On lance le menu
-            Menu monMenu = new Menu();
-            monMenu.start();
+            //Menu monMenu = new Menu();
+            //monMenu.start();
 
         } catch (Exception e) {
             System.err.println(e.toString());

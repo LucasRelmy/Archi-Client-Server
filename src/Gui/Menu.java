@@ -9,11 +9,13 @@ import java.awt.HeadlessException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 public class Menu extends JFrame {
-    private JComboBox comboBox1;
+    private JComboBox<ClientBdd> comboBox1;
     private JTextField textField1;
     private JList list1;
     private JSpinner spinner1;
@@ -22,7 +24,13 @@ public class Menu extends JFrame {
 	private JPanel MainPanel;
 
 	public Menu() {
-    	
+		System.out.println("Menu is built here " + this);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setContentPane(MainPanel);
+		setVisible(true);
+		pack();
+		comboBox1 = new JComboBox<ClientBdd>();
+		SetVariables();
 	}
 
 	private void SetVariables(){
@@ -48,31 +56,34 @@ public class Menu extends JFrame {
 	}
 
 	public void SetCompteClient(List<ClientBdd> Comptes){
-		comboBox1 = new JComboBox<ClientBdd>();
+		comboBox1.setModel(new DefaultComboBoxModel());
 		if (!Comptes.isEmpty()) {
 			for (ClientBdd c : Comptes) {
-				System.out.println(c.getNom());
+				System.out.println("nom " + c.getNom());
 				comboBox1.addItem(c);
+				System.out.println(comboBox1.getItemCount());
 			}
 		}
-		comboBox1.setSelectedIndex(0);
-	}
+		comboBox1.setVisible(true);
 
-	public void start() {
-    	EventQueue.invokeLater(new Runnable() {
+		comboBox1.setSelectedIndex(0);
+		comboBox1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox<String> comboComptes = (JComboBox)e.getSource();
+				System.out.println((ClientBdd)comboComptes.getSelectedItem());
+			}
+		});
+	}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JFrame frame = new JFrame("Menu");
-					frame.setContentPane(new Menu().MainPanel);
-					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					frame.pack();
+					Menu frame = new Menu();
 					frame.setVisible(true);
-					SetVariables();
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-    }
+	}
 }
