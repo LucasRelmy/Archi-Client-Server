@@ -64,7 +64,6 @@ public class Client
             //On lance le menu
             Menu monMenu = new Menu();
             monMenu.start();
-            //monMenu.setVariables();
 
         } catch (Exception e) {
             System.err.println(e.toString());
