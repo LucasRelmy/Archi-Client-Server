@@ -3,6 +3,7 @@ package Methodes;
 import ObjetsBdd.ClientBdd;
 import ObjetsBdd.ComposantBdd;
 import ObjetsBdd.FactureBdd;
+import ObjetsBdd.FamilleBdd;
 
 import java.util.*;
 import java.sql.ResultSet;
@@ -40,10 +41,32 @@ public class ImplClasse implements RemoteInter {
         res.close();
         return liste;
     }
+
+    public List<FamilleBdd> getFamille() throws Exception
+    {
+        List<FamilleBdd> liste = new ArrayList<FamilleBdd>();
+
+        String sql = "SELECT * FROM famille";
+        ResultSet res = manager.getData(sql);
+        //Extraire des données de ResultSet
+        while(res.next()) {
+            // Récupérer par nom de colonne
+            int id = res.getInt("id");
+            String nom = res.getString("Nom");
+            // Définir les valeurs
+            FamilleBdd c = new FamilleBdd();
+            c.setId(id);
+            c.setNom(nom);
+            liste.add(c);
+        }
+        res.close();
+        return liste;
+    }
     public ComposantBdd FindComposantByRef(String pRef) throws Exception {
 
-        String sql = "SELECT * FROM composant where Ref = " + pRef ;
+        String sql = "SELECT * FROM composant where Ref = '" + pRef + "'";
         ResultSet res = manager.getData(sql);
+        System.out.println(res);
         ComposantBdd compo = new ComposantBdd();
 
         while(res.next()) {
@@ -66,7 +89,7 @@ public class ImplClasse implements RemoteInter {
     {
         List<ComposantBdd> liste = new ArrayList<ComposantBdd>();
 
-        String sql = "SELECT * FROM composant WHERE famille = " + pFamille + " AND NbExemplaire > 0";
+        String sql = "SELECT * FROM composant WHERE famille = '" + pFamille + "' AND NbExemplaire > 0";
         System.out.println(sql);
         ResultSet res = manager.getData(sql);
         //Extraire des données de ResultSet

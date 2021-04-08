@@ -38,4 +38,9 @@ public class ComposantBdd implements Serializable {
     public void setPrix(float prix) {
         this.prix = prix;
     }
+
+    @Override
+    public String toString() {
+        return ref;
+    }
 }

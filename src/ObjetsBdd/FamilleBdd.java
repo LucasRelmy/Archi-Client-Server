@@ -21,4 +21,9 @@ public class FamilleBdd implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    @Override
+    public String toString() {
+        return  nom;
+    }
 }
