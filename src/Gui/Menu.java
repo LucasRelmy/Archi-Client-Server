@@ -21,6 +21,7 @@ public class Menu extends JFrame {
     private JSpinner spinner1;
     private JButton acheterButton;
     private JButton afficherLesFacturesButton;
+    private JButton rechercherButton;
 	private JPanel MainPanel;
 
 	public Menu() {
@@ -29,7 +30,6 @@ public class Menu extends JFrame {
 		setContentPane(MainPanel);
 		setVisible(true);
 		pack();
-		comboBox1 = new JComboBox<ClientBdd>();
 		SetVariables();
 	}
 

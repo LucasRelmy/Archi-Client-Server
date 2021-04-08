@@ -37,5 +37,13 @@ public class ClientBdd implements Serializable{
     public void setPayement(int payement) {
         this.payement = payement;
     }
+
+    @Override
+    public String toString() {
+        return "ClientBdd{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                '}';
+    }
 }
 
