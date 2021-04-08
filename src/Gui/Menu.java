@@ -109,7 +109,8 @@ public class Menu extends JFrame {
 				public void run() {
 					try {
 						Facture frame = new Facture();
-						frame.SetFacure(factures);
+						System.out.println(factures);
+						frame.SetFacture(factures);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

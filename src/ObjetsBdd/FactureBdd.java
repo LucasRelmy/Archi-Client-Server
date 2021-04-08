@@ -1,6 +1,8 @@
 package ObjetsBdd;
 
-public class FactureBdd {
+import java.io.Serializable;
+
+public class FactureBdd implements Serializable {
     private int ID,IDClient;
     private String Date;
     private float prix;

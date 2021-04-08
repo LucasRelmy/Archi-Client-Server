@@ -139,12 +139,10 @@ public class ImplClasse implements RemoteInter {
     @Override
     public List<FactureBdd> getFactures(int pIDClient) throws Exception {
         List<FactureBdd> liste = new ArrayList<FactureBdd>();
-
         String sql = "SELECT * FROM facture WHERE IdClient = '" + pIDClient + "'";
         ResultSet res = manager.getData(sql);
 
         //Extraire des données de ResultSet
-        if (res.next()){
             while(res.next()) {
                 // Récupérer par nom de colonne
                 int id = res.getInt("id");
@@ -161,7 +159,7 @@ public class ImplClasse implements RemoteInter {
                 liste.add(f);
             }
 
-        }
+
         res.close();
         return liste;
     }

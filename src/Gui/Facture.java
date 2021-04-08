@@ -16,10 +16,10 @@ public class Facture extends JFrame {
         pack();
     }
 
-    public void SetFacure(List<FactureBdd> factures) {
+    public void SetFacture(List<FactureBdd> factures) {
         String lesFactures="Mes factures : \n";
         for (FactureBdd f : factures){
-            lesFactures += "Facture " + f.getID() + " " + f.getPrix() + "€" + f.getDate() + "\n";
+            lesFactures += "Facture n°" + f.getID() + " prix : " + f.getPrix() + "€. Date : " + f.getDate() + "\n";
 
         }
         textArea1.setText(lesFactures);
