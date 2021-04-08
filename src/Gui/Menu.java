@@ -24,6 +24,8 @@ public class Menu extends JFrame {
     private JButton afficherLesFacturesButton;
     private JButton rechercherButton;
 	private JPanel MainPanel;
+	private JLabel adresseClient;
+	private JLabel factureClient;
 
 	public Menu() {
 		System.out.println("Menu is built here " + this);
@@ -51,6 +53,7 @@ public class Menu extends JFrame {
 			//Set les variables
 			SetCompteClient(liste);
 
+
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -73,9 +76,18 @@ public class Menu extends JFrame {
 				JComboBox<String> comboComptes = (JComboBox)e.getSource();
 				System.out.println((ClientBdd)comboComptes.getSelectedItem());
 				clientSelect = (ClientBdd)comboComptes.getSelectedItem();
+				updateClient(clientSelect);
 			}
 		});
+		clientSelect = (ClientBdd) comboBox1.getSelectedItem();
+		updateClient(clientSelect);
 	}
+
+	private void updateClient(ClientBdd client){
+		adresseClient.setText(client.getAdresse());
+		factureClient.setText(String.valueOf(client.getTotalFacture()));
+	}
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

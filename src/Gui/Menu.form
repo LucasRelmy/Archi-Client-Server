@@ -40,7 +40,7 @@
           <text value="Facture Actuelle :"/>
         </properties>
       </component>
-      <component id="90d9f" class="javax.swing.JLabel">
+      <component id="90d9f" class="javax.swing.JLabel" binding="adresseClient">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -48,7 +48,7 @@
           <text value="Pas de client selectionné"/>
         </properties>
       </component>
-      <component id="4e787" class="javax.swing.JLabel">
+      <component id="4e787" class="javax.swing.JLabel" binding="factureClient">
         <constraints>
           <grid row="1" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
