@@ -2,6 +2,8 @@ package Gui;
 
 import Methodes.RemoteInter;
 import ObjetsBdd.ClientBdd;
+import ObjetsBdd.ComposantBdd;
+import ObjetsBdd.FactureBdd;
 
 import java.awt.EventQueue;
 import java.awt.Dimension;
@@ -9,6 +11,7 @@ import java.awt.HeadlessException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,7 +21,7 @@ public class Menu extends JFrame {
     private JComboBox<ClientBdd> comboBox1;
     private ClientBdd clientSelect;
     private JTextField textField1;
-    private JList list1;
+    private JList<ComposantBdd> list1;
     private JSpinner spinner1;
     private JButton acheterButton;
     private JButton afficherLesFacturesButton;
@@ -34,6 +37,12 @@ public class Menu extends JFrame {
 		setVisible(true);
 		pack();
 		SetVariables();
+		afficherLesFacturesButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AfficherFacture(clientSelect.getId());
+			}
+		});
 	}
 
 	private void SetVariables(){
@@ -52,7 +61,14 @@ public class Menu extends JFrame {
 
 			//Set les variables
 			SetCompteClient(liste);
+			ComposantBdd compo=stub.FindComposantByRef("'Turbo Resistance 2000Wut'");
 
+			//JLabel componant = new JLabel();
+			//componant.setText(compo.getRef());
+			//System.out.println(compo.getRef());
+			//list1.add( componant );
+			//list1.setSelectedIndex(0);
+			//System.out.println(list1.getFirstVisibleIndex());
 
 		} catch (Exception e) {
 			System.err.println(e.toString());
@@ -83,9 +99,31 @@ public class Menu extends JFrame {
 		updateClient(clientSelect);
 	}
 
+	private void AfficherFacture(int idCLient){
+		try {
+			Registry reg = LocateRegistry.getRegistry(null);
+			RemoteInter stub = (RemoteInter) reg.lookup("Methodes.RemoteInter");
+			List<FactureBdd> factures = (List) stub.getFactures(idCLient);
+			//Ouvre une nouvelle fenetre
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						Facture frame = new Facture();
+						frame.SetFacure(factures);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+
+		} catch (Exception e) {
+			System.err.println(e.toString());
+		}
+	}
+
 	private void updateClient(ClientBdd client){
 		adresseClient.setText(client.getAdresse());
-		factureClient.setText(String.valueOf(client.getTotalFacture()));
+		factureClient.setText(String.valueOf(client.getTotalFacture()+"€"));
 	}
 
 	public static void main(String[] args) {

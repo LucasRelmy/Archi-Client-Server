@@ -142,6 +142,7 @@ public class ImplClasse implements RemoteInter {
 
         String sql = "SELECT * FROM facture WHERE IdClient = '" + pIDClient + "'";
         ResultSet res = manager.getData(sql);
+
         //Extraire des données de ResultSet
         if (res.next()){
             while(res.next()) {
